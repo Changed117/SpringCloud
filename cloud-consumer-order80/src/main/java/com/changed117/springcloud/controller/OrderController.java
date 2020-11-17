@@ -1,6 +1,7 @@
 package com.changed117.springcloud.controller;
 
 
+
 import com.changed117.springcloud.entities.CommonResult;
 import com.changed117.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
@@ -15,14 +16,14 @@ import javax.annotation.Resource;
 @Slf4j
 public class OrderController {
 
-    private static final String PAYMENT_URL = "http://localhost:8001";
+//    private static final String PAYMENT_URL = "http://localhost:8001";
+    private static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
 
     @Resource
     RestTemplate restTemplate;
 
     @GetMapping("/consumer/payment/create")
     public CommonResult<Payment> add(Payment payment){
-        System.out.println(payment);
         return restTemplate.postForObject(PAYMENT_URL+"/add",payment,CommonResult.class);
     }
 
